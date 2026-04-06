@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gửi Đề Nghị Cấp Dầu</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f6f9; padding: 20px; }
+        .form-container { max-width: 500px; margin: 30px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-top: 5px solid #ffc107; }
+        h1 { text-align: center; color: #333; margin-top: 0; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; }
+        input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
+        textarea { resize: vertical; height: 100px; }
+        .btn-submit { width: 100%; padding: 12px; background-color: #ffc107; color: #333; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 16px; margin-top: 10px; }
+        .btn-submit:hover { background-color: #e0a800; }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #0056b3; text-decoration: none; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>📝 Phiếu Đề Nghị Cấp Dầu DO</h1>
+        <p style="text-align:center; color: #666; font-size: 14px; margin-bottom: 20px;">Vui lòng điền đầy đủ thông tin để Admin duyệt.</p>
+        
+        <form id="requestForm">
+            <div class="form-group">
+                <label>Số dầu đề nghị (Lít) *</label>
+                <input type="number" name="amount" placeholder="VD: 500" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Công trình/Dự án *</label>
+                <select name="project" required>
+                    <option value="" disabled selected>-- Chọn công trình --</option>
+                    <option value="CT Cầu Rạch Miễu">CT Cầu Rạch Miễu</option>
+                    <option value="CT Đường cao tốc">CT Đường cao tốc</option>
+                    <option value="Văn phòng Công ty">Văn phòng Công ty</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label>Tổ/Đội/Người đề nghị *</label>
+                <input type="text" name="requester" placeholder="VD: Tổ lái máy xúc - Anh A" required>
+            </div>
+            
+            <div class="form-group">
+                <label>Lý do đề nghị/Ghi chú</label>
+                <textarea name="notes" placeholder="VD: Cấp dầu cho máy xúc Komatsu làm việc ca đêm"></textarea>
+            </div>
+            
+            <button type="submit" class="btn-submit">Gửi Đề Nghị</button>
+        </form>
+        
+        <a href="index.html" class="back-link">← Quay về trang chủ (Admin)</a>
+    </div>
+
+    <script>
+        // Phần này sau này sẽ viết code JS để gửi dữ liệu lên Supabase
+        document.getElementById('requestForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Cảm ơn bạn! Đề nghị đã được gửi đến Admin để duyệt (Tính năng thật đang được xây dựng).');
+            this.reset(); // Xóa form
+        });
+    </script>
+</body>
+</html>

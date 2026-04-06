@@ -3,64 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gửi Đề Nghị Cấp Dầu</title>
+    <title>Đề Nghị Cấp Dầu</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f4f6f9; padding: 20px; }
-        .form-container { max-width: 500px; margin: 30px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); border-top: 5px solid #ffc107; }
-        h1 { text-align: center; color: #333; margin-top: 0; }
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f5f6fa; margin: 0; padding-bottom: 50px; }
+        
+        /* Banner đỏ nổi bật */
+        .header-banner { background-color: #d32f2f; color: white; text-align: center; padding: 25px 20px; }
+        .header-banner h1 { margin: 0; font-size: 24px; text-transform: uppercase; letter-spacing: 1px; }
+        .header-banner p { margin: 10px 0 0 0; font-size: 14px; opacity: 0.9; }
+
+        .container { max-width: 1000px; margin: 30px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        
+        .step-title { font-size: 18px; font-weight: bold; color: #333; margin-bottom: 20px; display: flex; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 10px;}
+        .step-title span { color: #d32f2f; margin-right: 10px; }
+
+        /* Lưới các thẻ bộ phận */
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; margin-bottom: 40px; }
+        .dept-card { background: #fff; border: 2px solid #eee; border-radius: 8px; padding: 25px 15px; text-align: center; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+        .dept-card:hover { border-color: #ffcdd2; background-color: #fffafb; transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .dept-card.active { border-color: #d32f2f; background-color: #fffafb; box-shadow: 0 0 0 1px #d32f2f; }
+        .dept-icon { font-size: 30px; margin-bottom: 15px; color: #d32f2f; }
+        .dept-name { font-weight: bold; color: #444; font-size: 14px; text-transform: uppercase; }
+
+        /* Form nhập chi tiết (mặc định ẩn) */
+        #form-section { display: none; background: #fdfdfd; padding: 25px; border-radius: 8px; border: 1px dashed #ccc; }
         .form-group { margin-bottom: 15px; }
         label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; }
-        input, select, textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; }
-        textarea { resize: vertical; height: 100px; }
-        .btn-submit { width: 100%; padding: 12px; background-color: #ffc107; color: #333; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 16px; margin-top: 10px; }
-        .btn-submit:hover { background-color: #e0a800; }
-        .back-link { display: block; text-align: center; margin-top: 20px; color: #0056b3; text-decoration: none; font-size: 14px; }
+        input, textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 15px; }
+        textarea { height: 80px; resize: vertical; }
+        
+        .btn-submit { background-color: #d32f2f; color: white; border: none; padding: 15px 30px; font-size: 16px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 15px; text-transform: uppercase; }
+        .btn-submit:hover { background-color: #b71c1c; }
+        
+        .back-home { display: block; text-align: center; margin-top: 20px; color: #666; text-decoration: none; }
+        .back-home:hover { color: #d32f2f; text-decoration: underline; }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <h1>📝 Phiếu Đề Nghị Cấp Dầu DO</h1>
-        <p style="text-align:center; color: #666; font-size: 14px; margin-bottom: 20px;">Vui lòng điền đầy đủ thông tin để Admin duyệt.</p>
+
+    <div class="header-banner">
+        <h1>🛢️ HỆ THỐNG IN PHIẾU ĐỀ NGHỊ XUẤT DẦU DO</h1>
+        <p>Chọn đúng bộ phận của bạn để gửi đề nghị về Kho Tổng</p>
+    </div>
+
+    <div class="container">
+        <div class="step-title"><span>📌</span> 1. SƠ ĐỒ TỔ CHỨC - CHỌN TỔ / BỘ PHẬN</div>
         
-        <form id="requestForm">
-            <div class="form-group">
-                <label>Số dầu đề nghị (Lít) *</label>
-                <input type="number" name="amount" placeholder="VD: 500" required>
+        <div class="grid-container" id="deptGrid">
+            <div class="dept-card" onclick="selectDept(this, 'Kho Vũng Tàu')">
+                <div class="dept-icon">👥</div><div class="dept-name">KHO VŨNG TÀU</div>
             </div>
-            
-            <div class="form-group">
-                <label>Công trình/Dự án *</label>
-                <select name="project" required>
-                    <option value="" disabled selected>-- Chọn công trình --</option>
-                    <option value="CT Cầu Rạch Miễu">CT Cầu Rạch Miễu</option>
-                    <option value="CT Đường cao tốc">CT Đường cao tốc</option>
-                    <option value="Văn phòng Công ty">Văn phòng Công ty</option>
-                </select>
+            <div class="dept-card" onclick="selectDept(this, 'Bộ Phận Bảo Trì')">
+                <div class="dept-icon">🔧</div><div class="dept-name">BP. BẢO TRÌ</div>
             </div>
-            
-            <div class="form-group">
-                <label>Tổ/Đội/Người đề nghị *</label>
-                <input type="text" name="requester" placeholder="VD: Tổ lái máy xúc - Anh A" required>
+            <div class="dept-card" onclick="selectDept(this, 'Đội Xe Xúc')">
+                <div class="dept-icon">🚜</div><div class="dept-name">ĐỘI XE XÚC</div>
             </div>
-            
-            <div class="form-group">
-                <label>Lý do đề nghị/Ghi chú</label>
-                <textarea name="notes" placeholder="VD: Cấp dầu cho máy xúc Komatsu làm việc ca đêm"></textarea>
+            <div class="dept-card" onclick="selectDept(this, 'Đội Xe Tải')">
+                <div class="dept-icon">🚛</div><div class="dept-name">ĐỘI XE TẢI</div>
             </div>
+            <div class="dept-card" onclick="selectDept(this, 'CT Cầu Rạch Miễu')">
+                <div class="dept-icon">🏗️</div><div class="dept-name">CT CẦU RẠCH MIỄU</div>
+            </div>
+            <div class="dept-card" onclick="selectDept(this, 'CT Đường Cao Tốc')">
+                <div class="dept-icon">🛣️</div><div class="dept-name">CT ĐƯỜNG CAO TỐC</div>
+            </div>
+        </div>
+
+        <div id="form-section">
+            <div class="step-title"><span>📝</span> 2. ĐIỀN CHI TIẾT ĐỀ NGHỊ</div>
             
-            <button type="submit" class="btn-submit">Gửi Đề Nghị</button>
-        </form>
-        
-        <a href="index.html" class="back-link">← Quay về trang chủ (Admin)</a>
+            <form id="requestForm">
+                <div class="form-group">
+                    <label>Bộ phận đã chọn:</label>
+                    <input type="text" id="selectedDeptName" readonly style="background-color: #eee; font-weight: bold; color: #d32f2f;">
+                </div>
+                
+                <div class="form-group">
+                    <label>Số lượng dầu đề nghị (Lít) *</label>
+                    <input type="number" placeholder="Nhập số lít..." required>
+                </div>
+
+                <div class="form-group">
+                    <label>Người đề nghị / Mã máy *</label>
+                    <input type="text" placeholder="VD: Máy xúc Komatsu 01 - Anh Nam" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Ghi chú thêm</label>
+                    <textarea placeholder="Lý do hoặc thời gian cần nhận dầu..."></textarea>
+                </div>
+
+                <button type="button" class="btn-submit" onclick="alert('Tính năng gửi dữ liệu đang được xây dựng!')">Gửi Đề Nghị</button>
+            </form>
+        </div>
+
+        <a href="index.html" class="back-home">← Trở về màn hình Admin</a>
     </div>
 
     <script>
-        // Phần này sau này sẽ viết code JS để gửi dữ liệu lên Supabase
-        document.getElementById('requestForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Cảm ơn bạn! Đề nghị đã được gửi đến Admin để duyệt (Tính năng thật đang được xây dựng).');
-            this.reset(); // Xóa form
-        });
+        // Hiệu ứng click chọn bộ phận
+        function selectDept(cardElement, deptName) {
+            // Xóa hiệu ứng chọn ở các ô khác
+            let cards = document.querySelectorAll('.dept-card');
+            cards.forEach(c => c.classList.remove('active'));
+            
+            // Bật hiệu ứng chọn cho ô vừa click
+            cardElement.classList.add('active');
+            
+            // Hiện phần nhập Form lên và điền tên bộ phận vào
+            document.getElementById('form-section').style.display = 'block';
+            document.getElementById('selectedDeptName').value = deptName;
+            
+            // Cuộn màn hình xuống chỗ form cho mượt
+            document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });
+        }
     </script>
 </body>
 </html>

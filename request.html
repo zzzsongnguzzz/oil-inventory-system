@@ -3,121 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đề Nghị Cấp Dầu</title>
+    <title>Đề Nghị Cấp Dầu DO - DAIDUNG SHIPYARD</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f5f6fa; margin: 0; padding-bottom: 50px; }
-        
-        /* Banner đỏ nổi bật */
-        .header-banner { background-color: #d32f2f; color: white; text-align: center; padding: 25px 20px; }
-        .header-banner h1 { margin: 0; font-size: 24px; text-transform: uppercase; letter-spacing: 1px; }
-        .header-banner p { margin: 10px 0 0 0; font-size: 14px; opacity: 0.9; }
-
-        .container { max-width: 1000px; margin: 30px auto; background: white; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
-        
-        .step-title { font-size: 18px; font-weight: bold; color: #333; margin-bottom: 20px; display: flex; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 10px;}
-        .step-title span { color: #d32f2f; margin-right: 10px; }
-
-        /* Lưới các thẻ bộ phận */
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; margin-bottom: 40px; }
-        .dept-card { background: #fff; border: 2px solid #eee; border-radius: 8px; padding: 25px 15px; text-align: center; cursor: pointer; transition: all 0.2s ease; display: flex; flex-direction: column; align-items: center; justify-content: center; }
-        .dept-card:hover { border-color: #ffcdd2; background-color: #fffafb; transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .dept-card.active { border-color: #d32f2f; background-color: #fffafb; box-shadow: 0 0 0 1px #d32f2f; }
-        .dept-icon { font-size: 30px; margin-bottom: 15px; color: #d32f2f; }
-        .dept-name { font-weight: bold; color: #444; font-size: 14px; text-transform: uppercase; }
-
-        /* Form nhập chi tiết (mặc định ẩn) */
-        #form-section { display: none; background: #fdfdfd; padding: 25px; border-radius: 8px; border: 1px dashed #ccc; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; color: #555; }
-        input, textarea { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-size: 15px; }
-        textarea { height: 80px; resize: vertical; }
-        
-        .btn-submit { background-color: #d32f2f; color: white; border: none; padding: 15px 30px; font-size: 16px; font-weight: bold; border-radius: 5px; cursor: pointer; width: 100%; margin-top: 15px; text-transform: uppercase; }
-        .btn-submit:hover { background-color: #b71c1c; }
-        
-        .back-home { display: block; text-align: center; margin-top: 20px; color: #666; text-decoration: none; }
-        .back-home:hover { color: #d32f2f; text-decoration: underline; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background-color: #e9ecef; color: #333; margin: 0; padding: 20px; }
+        .container { max-width: 650px; margin: 0 auto; background: #fff; padding: 30px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        h2 { text-align: center; color: #2c3e50; margin-bottom: 5px; }
+        p.subtitle { text-align: center; color: #7f8c8d; margin-bottom: 25px; font-weight: 500; }
+        .section-title { font-size: 1.1em; color: #1a73e8; border-bottom: 2px solid #e8eaed; padding-bottom: 8px; margin-top: 25px; margin-bottom: 15px; font-weight: bold; }
+        .form-group { margin-bottom: 18px; }
+        .row { display: flex; gap: 15px; }
+        .col { flex: 1; }
+        label { display: block; font-weight: 600; margin-bottom: 6px; color: #495057; font-size: 0.95em; }
+        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ced4da; border-radius: 6px; box-sizing: border-box; font-size: 1em; transition: 0.3s; }
+        input:focus, select:focus, textarea:focus { outline: none; border-color: #1a73e8; box-shadow: 0 0 5px rgba(26,115,232,0.2); }
+        input[readonly] { background-color: #f8f9fa; color: #6c757d; cursor: not-allowed; }
+        button { width: 100%; padding: 14px; background-color: #1a73e8; color: white; border: none; border-radius: 6px; font-size: 1.1em; font-weight: bold; cursor: pointer; transition: 0.3s; margin-top: 15px; }
+        button:hover { background-color: #1557b0; }
+        button:disabled { background-color: #95a5a6; cursor: not-allowed; }
+        .back-link { display: block; text-align: center; margin-top: 20px; color: #1a73e8; text-decoration: none; font-weight: 500; }
     </style>
 </head>
 <body>
 
-    <div class="header-banner">
-        <h1>🛢️ HỆ THỐNG IN PHIẾU ĐỀ NGHỊ XUẤT DẦU DO</h1>
-        <p>Chọn đúng bộ phận của bạn để gửi đề nghị về Kho Tổng</p>
-    </div>
+<div class="container">
+    <h2>🛢️ HỆ THỐNG CẤP PHÁT DẦU DO</h2>
+    <p class="subtitle">Kho Tổng - DAIDUNG SHIPYARD</p>
 
-    <div class="container">
-        <div class="step-title"><span>📌</span> 1. SƠ ĐỒ TỔ CHỨC - CHỌN TỔ / BỘ PHẬN</div>
+    <form id="requestForm">
         
-        <div class="grid-container" id="deptGrid">
-            <div class="dept-card" onclick="selectDept(this, 'Kho Vũng Tàu')">
-                <div class="dept-icon">👥</div><div class="dept-name">KHO VŨNG TÀU</div>
+        <div class="section-title">📌 1. THÔNG TIN BỘ PHẬN YÊU CẦU</div>
+        <div class="form-group">
+            <label for="boPhan">Sơ đồ tổ chức - Chọn tổ/bộ phận *</label>
+            <select id="boPhan" required>
+                <option value="">-- Vui lòng chọn bộ phận --</option>
+                <option value="Kho Vũng Tàu">👥 KHO VŨNG TÀU</option>
+                <option value="BP. Bảo Trì">🔧 BP. BẢO TRÌ</option>
+                <option value="Đội Xe Xúc">🚜 ĐỘI XE XÚC</option>
+                <option value="Đội Xe Tải">🚛 ĐỘI XE TẢI</option>
+                <option value="CT Cầu Rạch Miễu">🏗️ CT CẦU RẠCH MIỄU</option>
+                <option value="CT Đường Cao Tốc">🛣️ CT ĐƯỜNG CAO TỐC</option>
+            </select>
+        </div>
+
+        <div class="row">
+            <div class="col form-group">
+                <label for="may">Mã máy / Tên thiết bị *</label>
+                <input type="text" id="may" placeholder="VD: Xe xúc 01" required>
             </div>
-            <div class="dept-card" onclick="selectDept(this, 'Bộ Phận Bảo Trì')">
-                <div class="dept-icon">🔧</div><div class="dept-name">BP. BẢO TRÌ</div>
-            </div>
-            <div class="dept-card" onclick="selectDept(this, 'Đội Xe Xúc')">
-                <div class="dept-icon">🚜</div><div class="dept-name">ĐỘI XE XÚC</div>
-            </div>
-            <div class="dept-card" onclick="selectDept(this, 'Đội Xe Tải')">
-                <div class="dept-icon">🚛</div><div class="dept-name">ĐỘI XE TẢI</div>
-            </div>
-            <div class="dept-card" onclick="selectDept(this, 'CT Cầu Rạch Miễu')">
-                <div class="dept-icon">🏗️</div><div class="dept-name">CT CẦU RẠCH MIỄU</div>
-            </div>
-            <div class="dept-card" onclick="selectDept(this, 'CT Đường Cao Tốc')">
-                <div class="dept-icon">🛣️</div><div class="dept-name">CT ĐƯỜNG CAO TỐC</div>
+            <div class="col form-group">
+                <label for="nguoiNhan">Người nhận dầu *</label>
+                <input type="text" id="nguoiNhan" placeholder="VD: L.T.Anh" required>
             </div>
         </div>
 
-        <div id="form-section">
-            <div class="step-title"><span>📝</span> 2. ĐIỀN CHI TIẾT ĐỀ NGHỊ</div>
-            
-            <form id="requestForm">
-                <div class="form-group">
-                    <label>Bộ phận đã chọn:</label>
-                    <input type="text" id="selectedDeptName" readonly style="background-color: #eee; font-weight: bold; color: #d32f2f;">
-                </div>
-                
-                <div class="form-group">
-                    <label>Số lượng dầu đề nghị (Lít) *</label>
-                    <input type="number" placeholder="Nhập số lít..." required>
-                </div>
-
-                <div class="form-group">
-                    <label>Người đề nghị / Mã máy *</label>
-                    <input type="text" placeholder="VD: Máy xúc Komatsu 01 - Anh Nam" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Ghi chú thêm</label>
-                    <textarea placeholder="Lý do hoặc thời gian cần nhận dầu..."></textarea>
-                </div>
-
-                <button type="button" class="btn-submit" onclick="alert('Tính năng gửi dữ liệu đang được xây dựng!')">Gửi Đề Nghị</button>
-            </form>
+        <div class="section-title">📝 2. CHI TIẾT CẤP PHÁT</div>
+        
+        <div class="row">
+            <div class="col form-group">
+                <label for="soLuong">Số lượng (Lít) *</label>
+                <input type="number" id="soLuong" placeholder="0" required min="1">
+            </div>
+            <div class="col form-group">
+                <label for="nguoiCapPhat">Người cấp phát *</label>
+                <input type="text" id="nguoiCapPhat" placeholder="Tên nhân viên kho" required>
+            </div>
         </div>
 
-        <a href="index.html" class="back-home">← Trở về màn hình Admin</a>
-    </div>
+        <div class="form-group">
+            <label for="ngayTao">Thời gian cấp phát</label>
+            <input type="text" id="ngayTao" readonly>
+        </div>
 
-    <script>
-        // Hiệu ứng click chọn bộ phận
-        function selectDept(cardElement, deptName) {
-            // Xóa hiệu ứng chọn ở các ô khác
-            let cards = document.querySelectorAll('.dept-card');
-            cards.forEach(c => c.classList.remove('active'));
-            
-            // Bật hiệu ứng chọn cho ô vừa click
-            cardElement.classList.add('active');
-            
-            // Hiện phần nhập Form lên và điền tên bộ phận vào
-            document.getElementById('form-section').style.display = 'block';
-            document.getElementById('selectedDeptName').value = deptName;
-            
-            // Cuộn màn hình xuống chỗ form cho mượt
-            document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });
-        }
-    </script>
+        <div class="form-group">
+            <label for="ghiChu">Ghi chú thêm</label>
+            <textarea id="ghiChu" rows="2" placeholder="Nhập ghi chú (nếu có)..."></textarea>
+        </div>
+
+        <button type="submit" id="btnSubmit">🚀 Lưu Phiếu Xuất Dầu</button>
+    </form>
+
+    <a href="index.html" class="back-link">← Trở về màn hình Admin</a>
+</div>
+
+<script>
+    window.onload = function() {
+        const now = new Date();
+        document.getElementById('ngayTao').value = now.toLocaleString('vi-VN');
+    };
+
+    document.getElementById('requestForm').addEventListener('submit', function(e) {
+        e.preventDefault(); 
+
+        const btnSubmit = document.getElementById('btnSubmit');
+        
+        const data = {
+            thoiGian: document.getElementById('ngayTao').value,
+            boPhan: document.getElementById('boPhan').value,
+            may: document.getElementById('may').value,
+            nguoiNhan: document.getElementById('nguoiNhan').value,
+            soLuong: document.getElementById('soLuong').value,
+            nguoiCapPhat: document.getElementById('nguoiCapPhat').value,
+            ghiChu: document.getElementById('ghiChu').value
+        };
+
+        btnSubmit.disabled = true;
+        btnSubmit.innerText = "⏳ Đang lưu dữ liệu...";
+
+        // ANH DÁN LINK GOOGLE SCRIPT CỦA ANH VÀO CHỖ CÓ CHỮ YOUR_GOOGLE_SCRIPT_URL_HERE BÊN DƯỚI NHÉ
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbywD0N9FaSgE5ng5PrWw86ZbJso1B6etLDnI3u7NRpsruQe0RcsIdp-W7UvkwIK_i88uQ/exec'; 
+
+        fetch(scriptURL, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                "Content-Type": "text/plain;charset=utf-8",
+            }
+        })
+        .then(response => response.json())
+        .then(result => {
+            if(result.status === 'success') {
+                alert("✅ Đã lưu phiếu cấp phát thành công vào hệ thống!");
+                window.location.href = "index.html"; 
+            } else {
+                alert("❌ Có lỗi xảy ra. Vui lòng thử lại!");
+                btnSubmit.disabled = false;
+                btnSubmit.innerText = "🚀 Lưu Phiếu Xuất Dầu";
+            }
+        })
+        .catch(error => {
+            console.error('Error!', error.message);
+            alert("❌ Lỗi kết nối. Vui lòng kiểm tra lại mạng!");
+            btnSubmit.disabled = false;
+            btnSubmit.innerText = "🚀 Lưu Phiếu Xuất Dầu";
+        });
+    });
+</script>
+
 </body>
 </html>
